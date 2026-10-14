@@ -1,0 +1,11 @@
+; Copy to php.ini and set extension_dir to your local PHP ext folder.
+extension_dir = "C:\path\to\php\ext"
+extension=openssl
+extension=pdo_mysql
+extension=mysqli
+extension=fileinfo
+extension=mbstring
+extension=curl
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 300

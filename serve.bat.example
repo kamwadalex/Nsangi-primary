@@ -1,0 +1,5 @@
+@echo off
+setlocal
+set ROOT=%~dp0
+set PHPRC=%ROOT%php.ini
+php -c "%ROOT%php.ini" -S 127.0.0.1:8000 -t "%ROOT%public" "%ROOT%server.php" %*
