@@ -108,11 +108,6 @@
 @php
     $schoolAddress = $school['address'] ?? 'Nsangi Masaka Rd, P.O.Box 89';
     $mapSchoolQuery = trim(($school['school_name'] ?? "Nsangi Parents' Primary School") . ', ' . $schoolAddress);
-    $mapLat = 0.3653;
-    $mapLng = 32.5286;
-    $mapZoom = 15;
-    $mapEmbedUrl = 'https://www.google.com/maps?q=' . $mapLat . ',' . $mapLng
-        . '&hl=en&z=' . $mapZoom . '&output=embed';
     $mapOpenUrl = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($mapSchoolQuery);
 @endphp
 
@@ -127,10 +122,13 @@
         <div class="contact-map__embed">
             <iframe
                 title="Map showing {{ $school['school_name'] ?? 'school' }} in Nsangi"
-                src="{{ $mapEmbedUrl }}"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63836.30556371967!2d32.416428509956205!3d0.2846058604977058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177da22e09aaaaab%3A0xdf007243f849c7c3!2sNsangi%20Parents%20Primary%20School!5e0!3m2!1sen!2sug!4v1792020180474!5m2!1sen!2sug"
+                width="600"
+                height="450"
+                style="border:0;"
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen=""
+                referrerpolicy="strict-origin-when-cross-origin"
             ></iframe>
         </div>
         <p class="contact-map__link-wrap">

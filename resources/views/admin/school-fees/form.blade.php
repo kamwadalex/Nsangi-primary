@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label for="class">Class</label>
-            <input type="text" id="class" name="class" class="form-control" value="{{ old('class', $fee->class) }}" required placeholder="e.g. S.1, S.2, S.3">
+            <input type="text" id="class" name="class" class="form-control" value="{{ old('class', $fee->class) }}" required placeholder="e.g. Nursery, P.1, P.2">
         </div>
         <div class="form-group">
             <label for="item">Item</label>

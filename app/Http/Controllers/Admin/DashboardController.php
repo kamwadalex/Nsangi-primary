@@ -8,9 +8,6 @@ use App\Models\Event;
 use App\Models\GalleryItem;
 use App\Models\Page;
 use App\Models\Post;
-use App\Models\S1Application;
-use App\Models\S5Application;
-use App\Models\ContinuingApplication;
 use App\Models\PrimaryApplication;
 use App\Models\StaffMember;
 
@@ -26,9 +23,6 @@ class DashboardController extends Controller
                 'staff' => StaffMember::count(),
                 'gallery' => GalleryItem::count(),
                 'messages' => ContactMessage::where('is_read', false)->count(),
-                's1_admissions' => S1Application::where('is_read', false)->count(),
-                's5_admissions' => S5Application::where('is_read', false)->count(),
-                'continuing_admissions' => ContinuingApplication::where('is_read', false)->count(),
                 'primary_admissions' => PrimaryApplication::where('is_read', false)->count(),
             ],
         ]);

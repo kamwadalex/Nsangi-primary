@@ -11,7 +11,7 @@
         @method('PUT')
 
         <h2 style="margin-top: 0; font-size: 1.1rem;">Site Images</h2>
-        <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 1.25rem;">Upload images to replace the grey placeholders on the public website.</p>
+        <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 1.25rem;">Upload an image to replace the current one. Slots without an image remain empty on the public website.</p>
         <div class="grid-2" style="margin-bottom: 2rem;">
             <div class="form-group">
                 <label for="logo">School Badge / Logo (header)</label>
@@ -24,7 +24,7 @@
                 <input type="file" id="logo" name="logo" class="form-control" accept="image/*">
             </div>
             <div class="form-group">
-                <label for="hero_image">Hero Welcome Background</label>
+                <label for="hero_image">Hero Welcome Background (home page)</label>
                 @include('admin.partials.image-preview', [
                     'current' => $settings['hero_image'] ?? null,
                     'input' => 'hero_image',
@@ -44,7 +44,7 @@
                 <input type="file" id="head_teacher_photo" name="head_teacher_photo" class="form-control" accept="image/*">
             </div>
             <div class="form-group">
-                <label for="about_image">About / Campus Photo</label>
+                <label for="about_image">Introduction / Campus Photo (home page)</label>
                 @include('admin.partials.image-preview', [
                     'current' => $settings['about_image'] ?? null,
                     'input' => 'about_image',

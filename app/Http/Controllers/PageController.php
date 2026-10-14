@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    private const RETIRED_PAGE_SLUGS = [
+        's1-application',
+        's5-application',
+        'continuing-application',
+    ];
+
     private const ABOUT_ANCHORS = [
         'about-school' => 'about-school',
         'head-teachers' => 'head-teachers',
@@ -36,6 +42,10 @@ class PageController extends Controller
 
     public function show(string $slug)
     {
+        if (in_array($slug, self::RETIRED_PAGE_SLUGS, true)) {
+            abort(404);
+        }
+
         if (isset(self::ABOUT_ANCHORS[$slug])) {
             return redirect()->to(route('about') . '#' . self::ABOUT_ANCHORS[$slug]);
         }

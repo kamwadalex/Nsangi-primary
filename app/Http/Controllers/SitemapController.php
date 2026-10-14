@@ -114,9 +114,7 @@ class SitemapController extends Controller
             [route('students'), 'monthly', '0.7'],
             [route('academics.school-fees'), 'monthly', '0.7'],
             [route('academics.sensitive-information'), 'monthly', '0.5'],
-            [route('s1-application'), 'monthly', '0.8'],
-            [route('s5-application'), 'monthly', '0.8'],
-            [route('continuing-application'), 'monthly', '0.8'],
+            [route('applications.primary.create'), 'monthly', '0.8'],
             [route('pages.show', 'social-responsibility'), 'monthly', '0.5'],
             [route('pages.show', 'spiritual-welfare'), 'monthly', '0.5'],
         ];

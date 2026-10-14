@@ -36,6 +36,10 @@
                     <span>Messages</span>
                     <span class="admin-nav-badge" data-notification-badge="messages" @if(($adminUnreadCounts['messages'] ?? 0) === 0) hidden @endif aria-label="Unread messages">{{ ($adminUnreadCounts['messages'] ?? 0) > 99 ? '99+' : ($adminUnreadCounts['messages'] ?? 0) }}</span>
                 </a>
+                <a href="{{ route('admin.admissions.index') }}" class="admin-nav-link--with-badge @if(request()->routeIs('admin.admissions.*')) active @endif">
+                    <span>Admissions</span>
+                    <span class="admin-nav-badge" data-notification-badge="admissions" @if(($adminUnreadCounts['admissions'] ?? 0) === 0) hidden @endif aria-label="Unread applications">{{ ($adminUnreadCounts['admissions'] ?? 0) > 99 ? '99+' : ($adminUnreadCounts['admissions'] ?? 0) }}</span>
+                </a>
                 <a href="{{ route('home') }}" target="_blank">View Site</a>
                 <form action="{{ route('admin.logout') }}" method="POST" style="margin-top: 1rem; padding: 0 1.25rem;">
                     @csrf

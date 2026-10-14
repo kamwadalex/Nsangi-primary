@@ -3148,7 +3148,193 @@ body.admin-body {
 .event-card,
 .calendar-card,
 .testimonial-card {
-    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.06);
+    box-shadow: 0 4px 16px rgba(38, 50, 56, 0.07);
+    transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.about-profile-card:hover,
+.value-box:hover,
+.prefect-card:hover,
+.staff-member-card:hover,
+.post-card:hover,
+.event-card:hover,
+.calendar-card:hover,
+.testimonial-card:hover {
+    box-shadow: 0 8px 24px rgba(38, 50, 56, 0.11);
+    transform: translateY(-2px);
+}
+
+.card {
+    background: var(--white);
+}
+
+.application-form {
+    max-width: 860px;
+    margin-inline: auto;
+}
+
+.application-paper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 3rem;
+    background: #fff;
+    border: 1px solid #d8ddd8;
+    box-shadow: 0 12px 32px rgba(38, 50, 56, 0.1);
+}
+
+.application-paper__header {
+    display: grid;
+    grid-template-columns: 72px 1fr 130px;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--green);
+}
+
+.application-paper__school-mark {
+    width: 64px;
+    height: 64px;
+}
+
+.application-paper__school-mark img,
+.application-paper__school-mark .school-image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.application-paper__header h2 {
+    margin: 0 0 0.3rem;
+    color: var(--green-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+}
+
+.application-paper__header p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.application-paper__header .application-paper__meta {
+    margin-top: 0.3rem;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.application-paper__reference {
+    display: grid;
+    gap: 0.45rem;
+    color: #666;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.application-paper__reference i {
+    display: block;
+    height: 1rem;
+    border-bottom: 1px solid #aeb7b0;
+}
+
+.application-paper__instructions {
+    margin: 1.25rem 0 1.5rem;
+    padding: 0.7rem 0.9rem;
+    background: #f5f7f4;
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+
+.application-paper__section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.35rem;
+    break-inside: avoid;
+}
+
+.application-paper__section h3 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid #d8ddd8;
+    color: var(--green-dark);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.application-paper__input {
+    border-color: #aeb7b0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.application-paper__input:focus {
+    border-color: var(--green);
+    box-shadow: 0 1px 0 var(--green);
+}
+
+.application-paper__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #d8ddd8;
+}
+
+.application-paper__footer p {
+    margin: 0;
+    color: #666;
+    font-size: 0.82rem;
+}
+
+.application-form__confirm {
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .application-paper {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .application-paper__header {
+        grid-template-columns: 56px 1fr;
+    }
+
+    .application-paper__school-mark,
+    .application-paper__school-mark img,
+    .application-paper__school-mark .school-image {
+        width: 52px;
+        height: 52px;
+    }
+
+    .application-paper__header h2 {
+        font-size: 1.1rem;
+    }
+
+    .application-paper__reference {
+        display: none;
+    }
+
+    .application-paper__footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+@media print {
+    .application-page .page-hero,
+    .application-page .alert {
+        display: none !important;
+    }
+
+    .application-paper {
+        max-width: none;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
 }
 
 .about-profile-card,
@@ -3184,6 +3370,17 @@ body.admin-body {
     .js-enabled .reveal.is-visible {
         opacity: 1;
         transform: none;
+        transition: none;
+    }
+
+    .about-profile-card,
+    .value-box,
+    .prefect-card,
+    .staff-member-card,
+    .post-card,
+    .event-card,
+    .calendar-card,
+    .testimonial-card {
         transition: none;
     }
 }

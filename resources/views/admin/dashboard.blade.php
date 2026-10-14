@@ -14,7 +14,7 @@
     <div class="stat-card"><div class="num">{{ $stats['staff'] }}</div><div>Staff</div></div>
     <div class="stat-card"><div class="num">{{ $stats['gallery'] }}</div><div>Gallery</div></div>
     <div class="stat-card"><div class="num" data-stat="unread-messages">{{ $stats['messages'] }}</div><div>Unread Messages</div></div>
-    <div class="stat-card"><div class="num" data-stat="unread-admissions">{{ $stats['s1_admissions'] + $stats['s5_admissions'] + ($stats['continuing_admissions'] ?? 0) + ($stats['primary_admissions'] ?? 0) }}</div><div>Unread Admissions</div></div>
+    <div class="stat-card"><div class="num" data-stat="unread-admissions">{{ $stats['primary_admissions'] }}</div><div>Unread Admissions</div></div>
 </div>
 
 <div class="admin-card">

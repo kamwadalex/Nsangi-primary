@@ -40,9 +40,6 @@ class AppServiceProvider extends ServiceProvider
             } catch (\Throwable) {
                 $view->with('adminUnreadCounts', [
                     'messages' => 0,
-                    's1_admissions' => 0,
-                    's5_admissions' => 0,
-                    'continuing_admissions' => 0,
                     'admissions' => 0,
                     'total' => 0,
                 ]);

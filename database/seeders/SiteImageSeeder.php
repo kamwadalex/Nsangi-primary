@@ -49,6 +49,7 @@ class SiteImageSeeder extends Seeder
     private function seedBadgeLogo(): void
     {
         $badgeCandidates = [
+            public_path('images/school-badge.png'),
             public_path('favicon.jpeg'),
             storage_path('app/public/settings/school-badge.jpeg'),
             base_path('app/images/WhatsApp_Image_2026-06-12_at_11.59.01-removebg-preview.png'),
@@ -68,11 +69,15 @@ class SiteImageSeeder extends Seeder
 
         $badgeDir = storage_path('app/public/settings');
         File::ensureDirectoryExists($badgeDir);
-        File::copy($badgeSource, $badgeDir.'/school-badge.jpeg');
+        $badgeExtension = strtolower(pathinfo($badgeSource, PATHINFO_EXTENSION));
+        $badgePath = $badgeDir.'/school-badge.'.$badgeExtension;
+        File::copy($badgeSource, $badgePath);
         File::ensureDirectoryExists(public_path('storage/settings'));
-        File::copy($badgeSource, public_path('storage/settings/school-badge.jpeg'));
-        File::copy($badgeSource, public_path('favicon.jpeg'));
-        Setting::set('logo', 'settings/school-badge.jpeg');
+        File::copy($badgeSource, public_path('storage/settings/school-badge.'.$badgeExtension));
+        if ($badgeExtension === 'jpeg' || $badgeExtension === 'jpg') {
+            File::copy($badgeSource, public_path('favicon.jpeg'));
+        }
+        Setting::set('logo', 'settings/school-badge.'.$badgeExtension);
     }
 
     private function seedStaffPhotos(): void

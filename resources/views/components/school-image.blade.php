@@ -10,8 +10,11 @@
     if ($src) {
         $forPdf = !empty($isPdf);
         $embedImages = $pdfEmbedImages ?? true;
+        $isLegacyBadge = $variant === 'badge' && basename(parse_url($src, PHP_URL_PATH) ?: $src) === 'school-badge.jpeg';
         if ($forPdf && ! $embedImages) {
             $url = null;
+        } elseif ($isLegacyBadge) {
+            $url = asset('images/school-badge.png');
         } elseif ($forPdf && !(str_starts_with($src, 'http://') || str_starts_with($src, 'https://'))) {
             $path = public_path('storage/'.$src);
             $url = is_file($path) ? $path : null;
@@ -20,7 +23,7 @@
             $storedPath = public_path('storage/'.ltrim($src, '/'));
             $url = $isRemote
                 ? $src
-                : (is_file($storedPath) ? asset('storage/'.ltrim($src, '/')) : asset('favicon.jpeg'));
+                : (is_file($storedPath) ? asset('storage/'.ltrim($src, '/')) : null);
         }
     }
 
