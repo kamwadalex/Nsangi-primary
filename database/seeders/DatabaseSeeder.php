@@ -13,7 +13,6 @@ use App\Models\SchoolFee;
 use App\Models\SensitiveDocument;
 use App\Models\SensitiveSection;
 use App\Models\Setting;
-use App\Models\StaffMember;
 use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -25,7 +24,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@nansanastjoseph.sc.ug'],
+            ['email' => 'admin@nsangiparentsprimaryschool.com'],
             ['name' => 'Administrator', 'password' => Hash::make('password')]
         );
 
@@ -142,31 +141,6 @@ class DatabaseSeeder extends Seeder
                 'is_published' => true,
             ]
         );
-
-        StaffMember::where('category', 'administration')->delete();
-
-        $staff = [
-            ['name' => 'Rev. Fr. Charles Muhigirwa', 'position' => 'Head Teacher', 'category' => 'administration', 'sort_order' => 1, 'bio' => 'Provides overall leadership and spiritual guidance for the school community.'],
-            ['name' => 'Ms. Namata Cissy', 'position' => 'Deputy Admin', 'category' => 'administration', 'sort_order' => 2, 'bio' => 'Oversees school administration, discipline, and day-to-day operations.'],
-            ['name' => 'Mr. Lwanga John', 'position' => 'Deputy Academics', 'category' => 'administration', 'sort_order' => 3, 'bio' => 'Leads academic programmes, examinations, and curriculum implementation.'],
-            ['name' => 'Mr. Ibrahim Baweireyo', 'position' => 'Director of Studies', 'category' => 'administration', 'sort_order' => 4, 'bio' => 'Directs academic planning, teaching standards, and examination preparation.'],
-            ['name' => 'Mr. Serubidde Joseph', 'position' => 'Assistant Director of Studies', 'category' => 'administration', 'sort_order' => 5, 'bio' => 'Supports the Director of Studies in academic coordination and student progress.'],
-            ['name' => 'Mr. James Muwonge', 'position' => 'Mathematics Teacher', 'subjects_taught' => 'Mathematics', 'category' => 'teaching', 'sort_order' => 1],
-            ['name' => 'Ms. Sarah Nambi', 'position' => 'English Teacher', 'subjects_taught' => 'English Language, Literature in English', 'category' => 'teaching', 'sort_order' => 2],
-            ['name' => 'Mr. David Ssali', 'position' => 'Biology Teacher', 'subjects_taught' => 'Biology', 'category' => 'teaching', 'sort_order' => 3],
-            ['name' => 'Ms. Grace Nakato', 'position' => 'Chemistry Teacher', 'subjects_taught' => 'Chemistry', 'category' => 'teaching', 'sort_order' => 4],
-            ['name' => 'Mr. Peter Okello', 'position' => 'Physics Teacher', 'subjects_taught' => 'Physics', 'category' => 'teaching', 'sort_order' => 5],
-            ['name' => 'Mr. Robert Kato', 'position' => 'School Bursar', 'category' => 'non-teaching', 'sort_order' => 1, 'email' => 'robert.kato@school.local', 'phone' => '0704000010'],
-            ['name' => 'Mrs. Grace Namukasa', 'position' => 'School Secretary', 'category' => 'non-teaching', 'sort_order' => 2, 'email' => 'grace.namukasa@school.local', 'phone' => '0704000011'],
-            ['name' => 'Mr. John Ssemwanga', 'position' => 'School Librarian', 'category' => 'non-teaching', 'sort_order' => 3, 'email' => 'john.ssemwanga@school.local', 'phone' => '0704000012'],
-        ];
-
-        foreach ($staff as $member) {
-            StaffMember::updateOrCreate(
-                ['name' => $member['name'], 'category' => $member['category']],
-                $member
-            );
-        }
 
         Post::updateOrCreate(
             ['slug' => 'welcome-new-term-2026'],
@@ -353,7 +327,6 @@ class DatabaseSeeder extends Seeder
         AboutProfile::query()->delete();
 
         $aboutProfiles = [
-            ['name' => 'School Head Teacher', 'position' => 'Head Teacher', 'category' => 'head-teachers', 'sort_order' => 1, 'bio' => 'Leads the school with a commitment to effective teaching, pupil welfare, discipline, and community partnership.'],
             ['name' => 'School Management', 'position' => 'Management Team', 'category' => 'board-of-governors', 'sort_order' => 1, 'bio' => 'Provides direction for the school and supports a positive learning environment for every child.'],
             ['name' => 'Parent Representative', 'position' => 'Parent Representative', 'category' => 'pta', 'sort_order' => 1, 'bio' => 'Supports communication and cooperation between families, teachers, and school management.'],
             ['name' => 'Nsangi Community', 'position' => 'Community Partner', 'category' => 'school-founders', 'sort_order' => 1, 'bio' => 'Parents and community members support the school\'s mission to provide quality education for children in Nsangi.'],

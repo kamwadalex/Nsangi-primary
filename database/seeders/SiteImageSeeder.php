@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\AboutProfile;
 use App\Models\GalleryItem;
 use App\Models\Prefect;
 use App\Models\Setting;
-use App\Models\StaffMember;
 use App\Support\SiteImageImporter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -20,8 +18,6 @@ class SiteImageSeeder extends Seeder
         }
 
         $this->seedSettings();
-        $this->seedStaffPhotos();
-        $this->seedAboutProfiles();
         $this->seedGallery();
         $this->seedPrefectPhotos();
     }
@@ -78,43 +74,6 @@ class SiteImageSeeder extends Seeder
             File::copy($badgeSource, public_path('favicon.jpeg'));
         }
         Setting::set('logo', 'settings/school-badge.'.$badgeExtension);
-    }
-
-    private function seedStaffPhotos(): void
-    {
-        $staffPhotos = [
-            'Rev. Fr. Charles Muhigirwa' => 'HeadTeacher1.jpeg',
-            'Ms. Namata Cissy' => 'DeputyHead1.jpeg',
-            'Mr. Ibrahim Baweireyo' => 'Dos.jpeg',
-            'Mr. Serubidde Joseph' => 'Dos2.jpeg',
-        ];
-
-        foreach ($staffPhotos as $name => $source) {
-            $path = SiteImageImporter::import($source, 'staff', $name);
-
-            if (! $path) {
-                continue;
-            }
-
-            StaffMember::query()
-                ->where('name', $name)
-                ->where('category', 'administration')
-                ->update(['image' => $path]);
-        }
-    }
-
-    private function seedAboutProfiles(): void
-    {
-        $path = SiteImageImporter::import('HeadTeacher1.jpeg', 'about-profiles', 'current-head-teacher');
-
-        if (! $path) {
-            return;
-        }
-
-        AboutProfile::query()
-            ->where('name', 'Rev. Fr. Charles Muhigirwa')
-            ->where('category', 'head-teachers')
-            ->update(['image' => $path]);
     }
 
     private function seedGallery(): void

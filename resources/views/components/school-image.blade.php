@@ -7,9 +7,9 @@
 
 @php
     $url = null;
+    $forPdf = !empty($isPdf);
+    $embedImages = $pdfEmbedImages ?? true;
     if ($src) {
-        $forPdf = !empty($isPdf);
-        $embedImages = $pdfEmbedImages ?? true;
         $isLegacyBadge = $variant === 'badge' && basename(parse_url($src, PHP_URL_PATH) ?: $src) === 'school-badge.jpeg';
         if ($forPdf && ! $embedImages) {
             $url = null;
@@ -24,6 +24,11 @@
             $url = $isRemote
                 ? $src
                 : (is_file($storedPath) ? asset('storage/'.ltrim($src, '/')) : null);
+        }
+    } elseif ($variant === 'badge' && (!$forPdf || $embedImages)) {
+        $badgePath = public_path('images/school-badge.png');
+        if (is_file($badgePath)) {
+            $url = $forPdf ? $badgePath : asset('images/school-badge.png');
         }
     }
 
